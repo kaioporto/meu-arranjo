@@ -10,7 +10,8 @@ cd meu-arranjo
 
 ## Montando o ambiente de desenvolvimento
 
-    Copy the .env.example file to .env and adjust any necessary environment variables:
+Copy the .env.example file to .env and adjust any necessary environment variables:
+
 ```bash
 cp .env.example .env
 ```
@@ -45,4 +46,4 @@ docker compose -f compose.dev.yaml exec php-fpm php artisan key:generate
 
 ## Acesse a aplicação:
 
-Acesse http://localhost. no seu navegador
+Acesse http://localhost no seu navegador
