@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Auth\LoginController;
 
 Route::get('/', function () {
     Log::info('Welcome page visited');
@@ -11,6 +13,9 @@ Route::get('/info', function () {
     Log::info('Phpinfo page visited');
     return phpinfo();
 });
+
+Route::get('/login', [LoginController::class, 'loginView'])->name('login');
+Route::post('/login', [LoginController::class, 'login'])->name('login');
 
 Route::get('/health', function () {
     $status = [];
