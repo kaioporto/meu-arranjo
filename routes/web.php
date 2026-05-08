@@ -4,10 +4,8 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Auth\LoginController;
 
-Route::get('/', function () {
-    Log::info('Welcome page visited');
-    return view('welcome');
-});
+//versão resumida usando view do route
+Route::view('/', 'home');
 
 Route::get('/info', function () {
     Log::info('Phpinfo page visited');
