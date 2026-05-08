@@ -14,8 +14,8 @@ Route::get('/info', function () {
     return phpinfo();
 });
 
-Route::get('/login', [LoginController::class, 'loginView'])->name('login');
-Route::post('/login', [LoginController::class, 'login'])->name('login');
+Route::get('/login', [LoginController::class, 'loginView'])->name('login.view');
+Route::post('/login', [LoginController::class, 'login'])->name('login.form');
 
 Route::get('/health', function () {
     $status = [];
