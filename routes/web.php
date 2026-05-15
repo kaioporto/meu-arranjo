@@ -17,6 +17,19 @@ Route::get('/info', function () {
 Route::get('/login', [LoginController::class, 'loginView'])->name('login');
 Route::post('/login', [LoginController::class, 'login'])->name('login');
 
+Route::get('/new_music', function () {
+    $musics = session()->get('musics', []);
+    //dd($musics);
+    return view('new_music', ['musics' => $musics]);
+});
+
+Route::post('/musics', function () {
+    $music = request('music');
+    session()->push('musics', $music);
+    return redirect('/new_music');
+});
+
+
 Route::get('/health', function () {
     $status = [];
 
