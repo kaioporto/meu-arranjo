@@ -18,6 +18,21 @@ Route::get('/login', function () {
 
 Route::post('/login', [LoginController::class, 'login']);
 
+//anotacoes
+
+//index
+Route::get('/notes', function () {
+    $notes = session()->get('notes', []);
+    return view('notes.index', ['notes' => $notes]);
+});
+
+//store
+Route::post('/notes', function () {
+    $note = request('notes');
+    session()->push('notes', $note);
+    return redirect('/notes');
+});
+
 Route::get('/health', function () {
     $status = [];
 
