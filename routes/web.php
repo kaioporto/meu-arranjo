@@ -12,8 +12,11 @@ Route::get('/info', function () {
     return phpinfo();
 });
 
-Route::get('/login', [LoginController::class, 'loginView'])->name('login.view');
-Route::post('/login', [LoginController::class, 'login'])->name('login.form');
+Route::get('/login', function () {
+    return view('auth.login');
+});
+
+Route::post('/login', [LoginController::class, 'login']);
 
 Route::get('/health', function () {
     $status = [];

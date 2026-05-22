@@ -3,8 +3,8 @@
         <div class="w-full max-w-md rounded-2xl bg-white p-8 shadow-xl">
             <h2 class="mb-6 text-center text-3xl font-bold text-gray-800">Login</h2>
 
-            <form action="#" method="POST" class="space-y-4">
-                <!-- Email Field -->
+            <form action="/login.form" method="POST" class="space-y-4">
+                @csrf
                 <div>
                     <label class="block text-sm font-medium text-gray-700">Email Address</label>
                     <input type="email" placeholder="you@example.com" required
