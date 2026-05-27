@@ -47,7 +47,7 @@ docker compose -f compose.dev.yaml exec workspace php artisan migrate
 ## Gere uma chave para a aplicação
 
 ```bash
-docker compose -f compose.dev.yaml exec php-fpm php artisan key:generate
+docker compose -f compose.dev.yaml exec workspace php artisan key:generate
 ```
 
 ## Acesse a aplicação:
