@@ -12,7 +12,7 @@
     <!-- Tailwhind CSS Framework -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
-<body class="bg-gray-700 p-6 max-w-xl mx-auto">
+<body class="bg-gray-700 p-6 max-w-xl text-white mx-auto">
     {{ $slot }}
 </body>
 </html>

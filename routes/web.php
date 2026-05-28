@@ -1,8 +1,9 @@
 <?php
 
+use App\Http\Controllers\NoteController;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Auth\LoginController;
+
 
 //versão resumida usando view do route
 Route::view('/', 'home');
@@ -18,20 +19,14 @@ Route::get('/login', function () {
 
 Route::post('/login', [LoginController::class, 'login']);
 
-//anotacoes
-
-//index
-Route::get('/notes', function () {
-    $notes = session()->get('notes', []);
-    return view('notes.index', ['notes' => $notes]);
-});
-
-//store
-Route::post('/notes', function () {
-    $note = request('notes');
-    session()->push('notes', $note);
-    return redirect('/notes');
-});
+//notes
+Route::get('/notes', [NoteController::class, 'index']);
+Route::get('/notes/create', [NoteController::class, 'create']);
+Route::post('/notes', [NoteController::class, 'store']);
+Route::get('/notes/{note}', [NoteController::class, 'show']);
+Route::get('/notes/{note}/edit', [NoteController::class, 'edit']);
+Route::patch('/notes/{note}', [NoteController::class, 'update']);
+Route::delete('/notes/{note}', [NoteController::class, 'destroy']);
 
 Route::get('/health', function () {
     $status = [];
