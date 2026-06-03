@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\NoteController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\NoteController;
+use App\Http\Controllers\MusicController;
 use App\Http\Controllers\Auth\LoginController;
 
 
@@ -18,6 +19,15 @@ Route::get('/login', function () {
 });
 
 Route::post('/login', [LoginController::class, 'login']);
+
+//musics
+Route::get('/musics', [MusicController::class, 'index']);
+Route::get('/musics/create', [MusicController::class, 'create']);
+Route::post('/musics', [MusicController::class, 'store']);
+Route::get('/musics/{music}', [MusicController::class, 'show']);
+Route::get('/musics/{music}/edit', [MusicController::class, 'edit']);
+Route::patch('/musics/{music}', [MusicController::class, 'update']);
+Route::delete('/musics/{music}', [MusicController::class, 'destroy']);
 
 //notes
 Route::get('/notes', [NoteController::class, 'index']);
