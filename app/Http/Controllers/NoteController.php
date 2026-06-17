@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Note;
+use App\Models\Music;
 use Illuminate\Http\Request;
 
 class NoteController extends Controller
@@ -27,12 +28,9 @@ class NoteController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request, Music $music)
     {
-        Note::create([
-            'content' => $request->note
-        ]);
-
+        $music->notes()->create($request->note);
         return redirect('/notes');
     }
 

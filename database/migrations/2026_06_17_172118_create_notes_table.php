@@ -14,6 +14,9 @@ return new class extends Migration
         Schema::create('notes', function (Blueprint $table) {
             $table->id();
             $table->text('content');
+            $table->unsignedBigInteger('music_id');
+            $table->foreign('music_id')->references('id')->on('music')->onDelete('cascade');
+            //$table->foreignId('music_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
     }

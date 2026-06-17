@@ -9,4 +9,8 @@ class Note extends Model
     protected $fillable = [
         'content'
     ];
+
+    public function music(){
+        return $this->belongsTo(Music::class);
+    }
 }

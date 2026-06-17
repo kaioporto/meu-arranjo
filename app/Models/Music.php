@@ -12,4 +12,8 @@ class Music extends Model
         'artist',
         'tone'
     ];
+
+    public function notes(){
+        return $this->hasMany(Note::class)->latest();
+    }
 }
