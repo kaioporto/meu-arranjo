@@ -25,16 +25,15 @@ Route::get('/musics', [MusicController::class, 'index']);
 Route::get('/musics/create', [MusicController::class, 'create']);
 Route::post('/musics', [MusicController::class, 'store']);
 Route::get('/musics/{music}', [MusicController::class, 'show']);
-Route::post('/musics/{music}/notes', [NoteController::class, 'store'])->name('notes.store');
+
 Route::get('/musics/{music}/edit', [MusicController::class, 'edit']);
 Route::patch('/musics/{music}', [MusicController::class, 'update']);
 Route::delete('/musics/{music}', [MusicController::class, 'destroy']);
 
 //notes
-Route::get('/notes', [NoteController::class, 'index']);
-Route::get('/notes/create', [NoteController::class, 'create']);
-Route::get('/notes/{note}', [NoteController::class, 'show']);
-//store action is in musics routes stack with route: /musics/{music}/notes
+//store action is in musics routes stack with route: /musics/{music}/notes.
+// notes is a nested resource
+Route::post('/musics/{music}/notes', [NoteController::class, 'store'])->name('notes.store');
 Route::get('/notes/{note}/edit', [NoteController::class, 'edit']);
 Route::patch('/notes/{note}', [NoteController::class, 'update']);
 Route::delete('/notes/{note}', [NoteController::class, 'destroy'])->name('notes.destroy');

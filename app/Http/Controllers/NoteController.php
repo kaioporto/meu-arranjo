@@ -8,38 +8,18 @@ use Illuminate\Http\Request;
 
 class NoteController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        $notes = Note::all();
-        return view('notes.index', ['notes' => $notes]);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        return view('notes.create');
-    }
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request, Music $music)
     {
-        $music->notes()->create($request->note);
-        return redirect('/notes');
-    }
+        $validated = $request->validate([
+            'content' => 'required|string',
+        ]);
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Note $note)
-    {
-        return view('notes.show', ['note' => $note]);
+        $music->notes()->create($validated);
+        return back()->with('success', 'Note adicionada!');
     }
 
     /**
@@ -55,11 +35,11 @@ class NoteController extends Controller
      */
     public function update(Request $request, Note $note)
     {
-        $note->update([
-            'content' => $request->note
-        ]);
+        $validated = $request->validate(['content' => 'required|string']);
+        $note->update($validated);
 
-        return redirect("/notes/{$note->id}" );
+        return redirect()->route('musics.show', $note->music_id)
+                        ->with('success', 'Nota atualizada!');
     }
 
     /**
@@ -68,6 +48,6 @@ class NoteController extends Controller
     public function destroy(Note $note)
     {
         $note->delete();
-        return redirect('/notes');
+        return back()->with('success', 'Nota removida!');
     }
 }

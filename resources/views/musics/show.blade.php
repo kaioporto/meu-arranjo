@@ -13,12 +13,12 @@
             <p>{{ $music->lyrics }}</p>
         </div>
 
-        <h3 class="font-bold">Notas de aprendizado </h3>
+        <h3 class="font-bold mt-3">Notas de aprendizado </h3>
         <div class="notes-list col-span-6 mt-3">
             @forelse($music->notes as $note)
                 <div class="card mb-2">
                     <div class="card-body">
-                        <p>{{ $note->content }}</p>
+                        <p>{{ e($note->content) }}</p>
                         <small class="text-muted">Adicionado em {{ $note->created_at->format('d/m/Y H:i') }}</small>
                     </div>
                 </div>
@@ -27,16 +27,26 @@
             @endforelse
         </div>
         <div class="col-span-6 mt-3">
-            <form action="{{ route('notes.store', $music->id) }}" method="POST">
+            <form method="POST" action="{{ route('notes.store', $music->id) }}">
                 @csrf
                 <div class="col-span-full">
-                    <label for="nota">Adicionar nova nota:</label>
-                    <textarea name="nota" id="nota" rows="3" class="form-control" required></textarea>
-                    @error('nota')
-                    <span class="text-danger">{{ $message }}</span>
+                    <label for="content" class="block text-sm/6 font-medium text-white">Adicionar nova nota:</label>
+                    <div class="mt-2">
+                        <textarea
+                                id="content"
+                                name="content"
+                                rows="3"
+                                class="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6"
+                                placeholder="Ex: O compasso 4 usa uma pestana difícil, focar no dedilhado..."
+                                required></textarea>
+                    </div>
+                    @error('content')
+                        <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
+                    <div class="mt-6 flex items-center gap-x-6">
+                        <button type="submit" class="rounded-md bg-indigo-500 px-3 py-2 text-sm font-semibold text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">Salvar</button>
+                    </div>
                 </div>
-                <button type="submit" class="btn btn-primary mt-2">Salvar Nota</button>
             </form>
         </div>
     </div>
