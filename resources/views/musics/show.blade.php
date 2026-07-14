@@ -13,6 +13,14 @@
             <p>{{ $music->lyrics }}</p>
         </div>
 
+        <div class="mt-6 flex items-center gap-x-6">
+            <a
+                    href="/musics/{{ $music->id }}/edit"
+                    class="rounded-md bg-indigo-500 px-3 py-2 text-sm font-semibold text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">
+                Editar
+            </a>
+        </div>
+
         <h3 class="font-bold mt-3">Notas de aprendizado </h3>
         <div class="notes-list col-span-6 mt-3">
             @forelse($music->notes as $note)

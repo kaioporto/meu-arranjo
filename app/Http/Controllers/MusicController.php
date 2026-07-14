@@ -7,72 +7,55 @@ use Illuminate\Http\Request;
 
 class MusicController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         $musics = Music::all();
         return view('musics.index', ['musics' => $musics]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         return view('musics.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        Music::create([
-            'title' => $request->title,
-            'lyrics' => $request->lyrics,
-            'artist' => $request->artist,
-            'tone' => $request->tone,
+        $validated = $request->validate([
+            'title' => 'required|string|max:255',
+            'artist' => 'required|string|max:255',
+            'lyrics' => 'required|string',
+            'tone' => 'required|string|max:4',
         ]);
+
+        Music::create($validated);
 
         return redirect('/musics');
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(Music $music)
     {
         return view('musics.show', ['music' => $music]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(Music $music)
     {
         return view('musics.edit', ['music' => $music]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, Music $music)
     {
-        $music->update([
-            'title' => $request->title,
-            'lyrics' => $request->lyrics,
-            'artist' => $request->artist,
-            'tone' => $request->tone
+        $validated = $request->validate([
+            'title' => 'required|string|max:255',
+            'artist' => 'required|string|max:255',
+            'lyrics' => 'required|string',
+            'tone' => 'required|string|max:4',
         ]);
 
-        return redirect("/musics/{$music->id}" );
+        $music->update($validated);
+
+        return redirect("/musics/{$music->id}");
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Music $music)
     {
         $music->delete();
