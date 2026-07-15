@@ -1,16 +1,16 @@
 <x-layout title="Musics">
     <div class="mt-6 text-white">
-        <h2 class="font-bold">{{ $music->title }}</h2>
+        <h2 class="text-2xl font-bold">{{ $music->title }}</h2>
         <div class="sm:col-span-3">
-            <h3 class="font-bold"> {{ $music->artist }}</h3>
+            <h4 class="text-lg font-bold"> {{ $music->artist }}</h4>
         </div>
         <div class="sm:col-span-3 mt-3">
             <h3 class="font-bold">Tom:</h3>
-            <p class="text-sm/6 text-white">{{ $music->tone }}<p/>
+            <p class="text-sm/6 text-white">{{ $music->tone }}</p>
         </div>
         <div class="mt-6">
             <h3 class="font-bold">Letra </h3>
-            <p>{{ $music->lyrics }}</p>
+            <p class="mt-3">{{ $music->lyrics }}</p>
         </div>
 
         <div class="mt-6 flex items-center gap-x-6">
@@ -21,7 +21,7 @@
             </a>
         </div>
 
-        <h3 class="font-bold mt-3">Notas de aprendizado </h3>
+        <h3 class="text-lg font-bold mt-3">Notas de aprendizado </h3>
         <div class="notes-list col-span-6 mt-3">
             @forelse($music->notes as $note)
                 <div class="card mb-2">
