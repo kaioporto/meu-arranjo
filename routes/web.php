@@ -1,8 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\NoteController;
+use App\Http\Controllers\MusicController;
 use App\Http\Controllers\Auth\LoginController;
+
 
 //versão resumida usando view do route
 Route::view('/', 'home');
@@ -17,6 +19,24 @@ Route::get('/login', function () {
 });
 
 Route::post('/login', [LoginController::class, 'login']);
+
+//musics
+Route::get('/musics', [MusicController::class, 'index']);
+Route::get('/musics/create', [MusicController::class, 'create']);
+Route::post('/musics', [MusicController::class, 'store']);
+Route::get('/musics/{music}', [MusicController::class, 'show']);
+
+Route::get('/musics/{music}/edit', [MusicController::class, 'edit']);
+Route::patch('/musics/{music}', [MusicController::class, 'update']);
+Route::delete('/musics/{music}', [MusicController::class, 'destroy']);
+
+//notes
+//store action is in musics routes stack with route: /musics/{music}/notes.
+// notes is a nested resource
+Route::post('/musics/{music}/notes', [NoteController::class, 'store'])->name('notes.store');
+Route::get('/notes/{note}/edit', [NoteController::class, 'edit']);
+Route::patch('/notes/{note}', [NoteController::class, 'update']);
+Route::delete('/notes/{note}', [NoteController::class, 'destroy'])->name('notes.destroy');
 
 Route::get('/health', function () {
     $status = [];
