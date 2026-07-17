@@ -1,61 +1,41 @@
-@props([])
-<nav class="fixed top-0 left-0 bg-gray-800 border-b border-gray-700 w-full z-50">
-    <div class="px-4 sm:px-6 lg:px-8">
-        <div class="flex items-center justify-between h-16">
-            <a href="/" class="text-xl font-bold text-white whitespace-nowrap">
-                Meu Arranjo
-            </a>
-            <div class="hidden md:flex items-center space-x-4">
-                <a href="/" class="text-gray-300 hover:text-white transition-colors">Home</a>
-                <a href="/musics" class="text-gray-3000 hover:text-white transition-colors">Músicas</a>
-                @guest
-                    <a href="/login" class="text-gray-300 hover:text-white transition-colors">Login</a>
-                @endguest
-                @auth
-                    <form method="POST" action="/logout" class="inline">
-                        @csrf
-                        <button type="submit" class="text-gray-300 hover:text-white focus:outline-none cursor-pointer">
-                            Sair
-                        </button>
-                    </form>
-                @endauth
+<div class="navbar bg-base-100 shadow-sm">
+    <div class="navbar-start">
+        <div class="dropdown">
+            <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" /> </svg>
             </div>
-
-            <button id="navbar-toggle" class="md:hidden text-gray-300 hover:text-white focus:outline-none cursor-pointer">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-                </svg>
-            </button>
+            <ul
+                    tabindex="-1"
+                    class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+                <li><a href="/musics">Músicas</a></li>
+                <li>
+                    <a>Parent</a>
+                    <ul class="p-2">
+                        <li><a>Submenu 1</a></li>
+                        <li><a>Submenu 2</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Cifras</a></li>
+            </ul>
         </div>
+        <a href="/" class="btn btn-ghost text-xl">Meu Arranjo</a>
     </div>
-
-    <div id="navbar-menu" class="hidden md:hidden bg-gray-800 border-t border-gray-700">
-        <div class="px-2 py-3 space-y-1">
-            <a href="/" class="block px-3 py-2 text-gray-300 hover:text-white transition-colors">Home</a>
-            <a href="/musics" class="block px-3 py-2 text-gray-300 hover:text-white transition-colors">Músicas</a>
-            @guest
-                <a href="/login" class="block px-3 py-2 text-gray-300 hover:text-white transition-colors">Login</a>
-            @endguest
-            @auth
-                <form method="POST" action="/logout" class="inline">
-                    @csrf
-                    <button type="submit" class="text-gray-300 hover:text-white focus:outline-none cursor-pointer">
-                        Sair
-                    </button>
-                </form>
-            @endauth
-        </div>
+    <div class="navbar-center hidden lg:flex">
+        <ul class="menu menu-horizontal px-1">
+            <li><a href="/musics">Músicas</a></li>
+            <li>
+                <details>
+                    <summary>Parent</summary>
+                    <ul class="p-2 bg-base-100 w-40 z-1">
+                        <li><a>Submenu 1</a></li>
+                        <li><a>Submenu 2</a></li>
+                    </ul>
+                </details>
+            </li>
+            <li><a href="#">Cifras</a></li>
+        </ul>
     </div>
-</nav>
-
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        var toggle = document.getElementById('navbar-toggle');
-        var menu = document.getElementById('navbar-menu');
-        if (toggle && menu){
-            toggle.addEventListener('click', function () {
-                menu.classList.toggle('hidden');
-            });
-        }
-    });
-</script>
+    <div class="navbar-end">
+        <a href="/login" class="btn btn-primary">Login</a>
+    </div>
+</div>

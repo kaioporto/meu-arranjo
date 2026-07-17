@@ -3,7 +3,7 @@
 ])
 
 <!DOCTYPE html>
-<html lang="br">
+<html data-theme="forest" lang="br">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,7 +14,7 @@
     <!-- Tailwhind CSS Framework -->
 <!--    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script> -->
 </head>
-<body class="bg-gray-700 text-white pt-16">
+<body class="text-white">
     <x-navbar/>
     <main class="max-w-xl mx-auto p-6">
         {{ $slot }}
