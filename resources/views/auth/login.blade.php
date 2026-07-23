@@ -1,37 +1,64 @@
 <x-layout title="Login">
-    <div class="flex min-h-screen items-center rounded-2xl justify-center bg-gray-300 p-4">
-        <div class="w-full max-w-md rounded-2xl bg-white p-8 shadow-xl">
-            <h2 class="mb-6 text-center text-3xl font-bold text-gray-800">Login</h2>
-
-            <form action="/login.form" method="POST" class="space-y-4">
-                @csrf
-                <div>
-                    <label class="block text-sm font-medium text-gray-700">Email Address</label>
-                    <input type="email" placeholder="you@example.com" required
-                           class="mt-1 w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500" />
-                </div>
-                <div>
-                    <div class="flex items-center justify-between">
-                        <label class="block text-sm font-medium text-gray-700">Password</label>
-                        <a href="#" class="text-xs text-blue-600 hover:underline">Forgot?</a>
-                    </div>
-                    <input type="password" placeholder="••••••••" required
-                           class="mt-1 w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500" />
-                </div>
-                <div class="flex items-center">
-                    <input type="checkbox" id="remember" class="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500" />
-                    <label for="remember" class="ml-2 text-sm text-gray-600">Remember me</label>
-                </div>
-                <button type="submit"
-                        class="w-full rounded-lg bg-blue-600 py-2.5 font-semibold text-white transition duration-200 hover:bg-blue-700">
-                    Sign In
-                </button>
-            </form>
-            <p class="mt-6 text-center text-sm text-gray-600">
-                Don't have an account?
-                <a href="#" class="font-medium text-blue-600 hover:underline">Sign up</a>
-            </p>
-        </div>
-    </div>
-
+    <form action="/login.form" method="POST" class="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4">
+        @csrf
+        <legend class="fieldset-legend">Login</legend>
+        <fieldset class="fieldset">
+            <label class="label">
+                <span class="label">
+                    <svg class="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <g
+                                stroke-linejoin="round"
+                                stroke-linecap="round"
+                                stroke-width="2.5"
+                                fill="none"
+                                stroke="currentColor"
+                        >
+                            <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+                            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                        </g>
+                    </svg>
+                </span>
+                <input class="input validator" type="email" placeholder="mail@site.com" required />
+            </label>
+            <span class="validator-hint hidden">Enter valid email address</span>
+        </fieldset>
+        <fieldset class="fieldset">
+            <label class="label">
+                <span class="label">
+                    <svg class="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <g
+                                stroke-linejoin="round"
+                                stroke-linecap="round"
+                                stroke-width="2.5"
+                                fill="none"
+                                stroke="currentColor"
+                        >
+                            <path
+                                    d="M2.586 17.414A2 2 0 0 0 2 18.828V21a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h1a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h.172a2 2 0 0 0 1.414-.586l.814-.814a6.5 6.5 0 1 0-4-4z"
+                            ></path>
+                            <circle cx="16.5" cy="7.5" r=".5" fill="currentColor"></circle>
+                        </g>
+                    </svg>
+                </span>
+                <input
+                        class="input validator"
+                        type="password"
+                        required
+                        placeholder="Senha"
+                        minlength="8"
+                        pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                        title="Deve ser mais que 8 caracteres, incluindo número, letra minúscula e letra maiúscula"
+                />
+            </label>
+            <span class="validator-hint hidden">
+                Must be more than 8 characters, including
+                <br />At least one number <br />At least one lowercase letter <br />At least one uppercase letter
+            </span>
+        </fieldset>
+        <button type="submit" class="btn btn-neutral">Login</button>
+        <p class="mt-6 text-center text-sm">
+            Não tem uma conta?
+            <a href="#" class="hover:underline">Registre-se</a>
+        </p>
+    </form>
 </x-layout>

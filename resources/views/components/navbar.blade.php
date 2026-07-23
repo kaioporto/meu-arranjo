@@ -9,10 +9,10 @@
                     class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
                 <li><a href="/musics">Músicas</a></li>
                 <li>
-                    <a>Parent</a>
+                    <a>Opções</a>
                     <ul class="p-2">
-                        <li><a>Submenu 1</a></li>
-                        <li><a>Submenu 2</a></li>
+                        <li><a>Op 1</a></li>
+                        <li><a>Op 2</a></li>
                     </ul>
                 </li>
                 <li><a href="#">Cifras</a></li>
@@ -25,10 +25,10 @@
             <li><a href="/musics">Músicas</a></li>
             <li>
                 <details>
-                    <summary>Parent</summary>
+                    <summary>Opções</summary>
                     <ul class="p-2 bg-base-100 w-40 z-1">
-                        <li><a>Submenu 1</a></li>
-                        <li><a>Submenu 2</a></li>
+                        <li><a>Op 1</a></li>
+                        <li><a>Op 2</a></li>
                     </ul>
                 </details>
             </li>

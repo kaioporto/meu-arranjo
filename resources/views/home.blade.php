@@ -1,5 +1,3 @@
 <x-layout>
-    <main>
-        <h2>Meu Arranjo</h2>
-    </main>
+    <h2>Meu Arranjo</h2>
 </x-layout>

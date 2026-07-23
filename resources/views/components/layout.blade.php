@@ -3,7 +3,7 @@
 ])
 
 <!DOCTYPE html>
-<html data-theme="forest" lang="br">
+<html data-theme="autumn" lang="br">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,12 +11,10 @@
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
-    <!-- Tailwhind CSS Framework -->
-<!--    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script> -->
 </head>
-<body class="text-white">
+<body class="min-h-screen flex flex-col">
     <x-navbar/>
-    <main class="max-w-xl mx-auto p-6">
+    <main class="max-w-xl mx-auto p-6 flex-1">
         {{ $slot }}
     </main>
 </body>
